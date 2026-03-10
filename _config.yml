@@ -13,14 +13,12 @@ show_hero: true
 menu:
   - title: Home
     url: /
-  - title: Categories
-    url: /categories
-  - title: Series
-    url: /series
   - title: About
     url: /about
   - title: Contact
     url: /contact
+  - title: Feed
+    url: /feed.xml
 email: youremail@test.com
 # See: https://disqus.com/
 disqus_username: disqus_username
@@ -108,8 +106,7 @@ exclude: [
   'Gemfile',
   'Gemfile.lock',
   'gulpfile.js',
-  'README.md',
-  'temp-*/'
+  'README.md'
 ]
 
 # Theme

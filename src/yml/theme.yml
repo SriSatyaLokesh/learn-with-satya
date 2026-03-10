@@ -1,17 +1,20 @@
 # Learn with Satya K Theme Colors
-# Education-focused color palette: Blue (trust, learning) + Emerald (growth, success)
+# Ocean-inspired color palette with warm accents
 
 # Primary Colors
-themeColor: '#3B82F6'      # Blue 500 - primary brand color
-primaryDark: '#1E40AF'     # Blue 800 - dark mode primary
-accentDark: '#10B981'      # Emerald 500 - accent/success color
+themeColor: '#219ebc'      # Blue Green - primary brand color
+primaryDark: '#023047'     # Deep Space Blue - dark mode primary
+accentDark: '#ffb703'      # Amber Flame - accent/highlight color
 
 # Background Colors
-lightGray: '#F1F5F9'       # Slate 100 - light backgrounds
-texts: '#1E293B'           # Slate 800 - body text
+lightGray: '#ffffff'       # White - light backgrounds
+texts: '#023047'           # Deep Space Blue - body text
 
-# Additional Learning-Specific Colors (for future use)
+# Additional Colors
+skyBlueLight: '#8ecae6'    # Sky Blue Light - secondary accent
+princetonOrange: '#fb8500' # Princeton Orange - call-to-action
+
 # Difficulty badges:
-# - Beginner: #10B981 (Emerald 500)
-# - Intermediate: #F59E0B (Amber 500)
-# - Advanced: #EF4444 (Red 500)
+# - Beginner: #8ecae6 (Sky Blue Light)
+# - Intermediate: #ffb703 (Amber Flame)
+# - Advanced: #fb8500 (Princeton Orange)

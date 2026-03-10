@@ -8,7 +8,7 @@
     Master LLMs, ML fundamentals, RAG systems, embeddings, and AI agents.
     From theory to production deployments with hands-on examples.
   icon: "🤖"
-  color: "#8B5CF6"
+  color: "#219ebc"      # Blue Green
   text_color: "#FFFFFF"
   order: 1
 
@@ -19,7 +19,7 @@
     Build scalable distributed systems. Learn architecture patterns, 
     scalability strategies, and production system design principles.
   icon: "🏗️"
-  color: "#EF4444"
+  color: "#023047"      # Deep Space Blue
   text_color: "#FFFFFF"
   order: 2
 
@@ -30,7 +30,7 @@
     Master APIs, databases, authentication, microservices, and server-side 
     architecture for production applications.
   icon: "⚙️"
-  color: "#3B82F6"
+  color: "#219ebc"      # Blue Green
   text_color: "#FFFFFF"
   order: 3
 
@@ -41,8 +41,8 @@
     CI/CD pipelines, Docker, Kubernetes, cloud deployment, monitoring, 
     and infrastructure as code for modern applications.
   icon: "☁️"
-  color: "#10B981"
-  text_color: "#FFFFFF"
+  color: "#8ecae6"      # Sky Blue Light
+  text_color: "#023047"  # Dark text for light background
   order: 4
 
 - slug: frontend
@@ -52,8 +52,8 @@
     Modern JavaScript, React, performance optimization, web standards, 
     and building great user experiences.
   icon: "🎨"
-  color: "#F59E0B"
-  text_color: "#FFFFFF"
+  color: "#ffb703"      # Amber Flame
+  text_color: "#023047"  # Dark text
   order: 5
 
 - slug: career
@@ -63,7 +63,7 @@
     Developer growth strategies, productivity tips, job hunting, 
     interviewing, and building a successful tech career.
   icon: "📈"
-  color: "#EC4899"
+  color: "#fb8500"      # Princeton Orange
   text_color: "#FFFFFF"
   order: 6
 
@@ -74,6 +74,6 @@
     IDEs, CLI tools, frameworks, boilerplate setups, and productivity 
     tools that make development faster and better.
   icon: "🛠️"
-  color: "#6366F1"
+  color: "#219ebc"      # Blue Green
   text_color: "#FFFFFF"
   order: 7
