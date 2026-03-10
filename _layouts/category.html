@@ -4,9 +4,32 @@
     <body class="main-page has-push-menu">
         {% include svg-icons.html %}
         {% include header.html %}
+        
+        {% comment %}Get category data from categories.yml{% endcomment %}
+        {% assign category_data = site.data.categories | where: "slug", page.slug | first %}
+        
         <section class="content">
             <main class="home" id="post" role="main">
-                <h1 class="title-category">/{{page.title}}</h1>
+                {% comment %}Category header with icon and description{% endcomment %}
+                <div class="category-header" style="margin-bottom: 2rem;">
+                    <h1 class="title-category" style="display: flex; align-items: center; gap: 0.5rem;">
+                        {% if category_data.icon %}
+                            <span style="font-size: 2.5rem;">{{ category_data.icon }}</span>
+                        {% endif %}
+                        <span>/{{ page.title }}</span>
+                    </h1>
+                    {% if category_data.description %}
+                        <p class="category-description" style="font-size: 1.1rem; color: #64748B; max-width: 800px; margin: 1rem 0;">
+                            {{ category_data.description }}
+                        </p>
+                    {% endif %}
+                    {% comment %}Post count{% endcomment %}
+                    {% assign category_posts = site.posts | where: "category", page.slug %}
+                    <p style="color: #94A3B8; font-size: 0.9rem;">
+                        {{ category_posts.size }} {% if category_posts.size == 1 %}post{% else %}posts{% endif %}
+                    </p>
+                </div>
+                
                 <div id="grid" class="row flex-grid">
                     {% assign posts = site.posts | where_exp:"post","post.is_generated != true" %}
                     {% for post in posts %}
@@ -66,6 +89,3 @@
         {% include footer.html %}
     </body>
 </html>
-
-
-

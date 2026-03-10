@@ -1,0 +1,79 @@
+# Learn with Satya K - Category Definitions
+# 7 learning domains with rich metadata for visual identity and navigation
+
+- slug: ai
+  title: Artificial Intelligence
+  display_name: AI & Machine Learning
+  description: >
+    Master LLMs, ML fundamentals, RAG systems, embeddings, and AI agents.
+    From theory to production deployments with hands-on examples.
+  icon: "🤖"
+  color: "#8B5CF6"
+  text_color: "#FFFFFF"
+  order: 1
+
+- slug: system-design
+  title: System Design
+  display_name: System Design & Architecture
+  description: >
+    Build scalable distributed systems. Learn architecture patterns, 
+    scalability strategies, and production system design principles.
+  icon: "🏗️"
+  color: "#EF4444"
+  text_color: "#FFFFFF"
+  order: 2
+
+- slug: backend
+  title: Backend Engineering
+  display_name: Backend Engineering
+  description: >
+    Master APIs, databases, authentication, microservices, and server-side 
+    architecture for production applications.
+  icon: "⚙️"
+  color: "#3B82F6"
+  text_color: "#FFFFFF"
+  order: 3
+
+- slug: devops
+  title: DevOps & Infrastructure
+  display_name: DevOps & Cloud
+  description: >
+    CI/CD pipelines, Docker, Kubernetes, cloud deployment, monitoring, 
+    and infrastructure as code for modern applications.
+  icon: "☁️"
+  color: "#10B981"
+  text_color: "#FFFFFF"
+  order: 4
+
+- slug: frontend
+  title: Frontend Development
+  display_name: Frontend & Web
+  description: >
+    Modern JavaScript, React, performance optimization, web standards, 
+    and building great user experiences.
+  icon: "🎨"
+  color: "#F59E0B"
+  text_color: "#FFFFFF"
+  order: 5
+
+- slug: career
+  title: Career Development
+  display_name: Career & Growth
+  description: >
+    Developer growth strategies, productivity tips, job hunting, 
+    interviewing, and building a successful tech career.
+  icon: "📈"
+  color: "#EC4899"
+  text_color: "#FFFFFF"
+  order: 6
+
+- slug: tools
+  title: Developer Tools
+  display_name: Tools & Ecosystem
+  description: >
+    IDEs, CLI tools, frameworks, boilerplate setups, and productivity 
+    tools that make development faster and better.
+  icon: "🛠️"
+  color: "#6366F1"
+  text_color: "#FFFFFF"
+  order: 7

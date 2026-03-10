@@ -1,0 +1,35 @@
+{% comment %}
+Category Badge Component
+Displays a styled category badge with emoji icon and name
+Usage: {% include category-badge.html category="ai" %}
+{% endcomment %}
+
+{% assign category_data = site.data.categories | where: "slug", include.category | first %}
+
+{% if category_data %}
+<a href="{{ site.baseurl }}/category/{{ category_data.slug }}/" 
+   class="category-badge" 
+   style="display: inline-flex; 
+          align-items: center; 
+          gap: 0.35rem; 
+          padding: 0.25rem 0.75rem; 
+          border-radius: 9999px; 
+          background-color: {{ category_data.color }}15; 
+          border: 1px solid {{ category_data.color }}40;
+          color: {{ category_data.color }};
+          font-size: 0.875rem;
+          font-weight: 500;
+          text-decoration: none;
+          transition: all 0.2s ease;">
+    <span style="font-size: 1rem;">{{ category_data.icon }}</span>
+    <span>{{ category_data.display_name }}</span>
+</a>
+
+<style>
+.category-badge:hover {
+    background-color: {{ category_data.color }}25;
+    border-color: {{ category_data.color }}60;
+    transform: translateY(-1px);
+}
+</style>
+{% endif %}
