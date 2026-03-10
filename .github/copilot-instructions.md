@@ -1,5 +1,157 @@
 # Copilot Instructions for Learn with Satya K
 
+## ⚠️ MANDATORY GIT WORKFLOW - NO EXCEPTIONS
+
+**EVERY task, change, or feature MUST follow this workflow. No direct commits to main.**
+
+### Git Workflow (Enforce for ALL Tasks)
+
+```
+1. Create GitHub Issue → 2. Create Branch → 3. Make Changes → 4. Create PR → 5. Link PR to Issue → 6. Merge to Main
+```
+
+#### Step-by-Step Commands
+
+**1. Create GitHub Issue**
+```bash
+# Create issue via GitHub CLI
+gh issue create --title "Fix: Series navigation links missing baseurl" --body "Navigation links in series component don't include /learn-with-satya/ prefix, causing 404s on GitHub Pages."
+
+# Or prompt user to create issue manually at:
+# https://github.com/SriSatyaLokesh/learn-with-satya/issues/new
+```
+
+**2. Create Feature Branch**
+```bash
+# Format: <type>/<issue-number>-<short-description>
+# Types: feature/, fix/, docs/, style/, refactor/, test/, chore/
+
+# Example:
+git checkout -b fix/123-series-navigation-baseurl
+```
+
+**3. Make Changes and Commit**
+```bash
+# Make your changes, then:
+git add .
+git commit -m "fix: add baseurl to series navigation links
+
+- Updated _includes/series-navigation.html prevnext links
+- Fixed 'View all parts' dropdown links
+- Resolves #123"
+
+# Always include "Resolves #<issue-number>" in commit message
+```
+
+**4. Push Branch**
+```bash
+git push origin fix/123-series-navigation-baseurl
+```
+
+**5. Create Pull Request**
+```bash
+# Via GitHub CLI
+gh pr create --title "Fix: Series navigation links missing baseurl" --body "Fixes #123
+
+## Changes
+- Added {{ site.baseurl }} prefix to all series navigation links
+- Updated prev/next buttons and dropdown links
+- Tested locally with --baseurl flag
+
+## Testing
+- [x] Local build passes
+- [x] Links work with /learn-with-satya/ prefix
+- [x] Navigation functions correctly" --base main
+
+# Or prompt user to create PR at:
+# https://github.com/SriSatyaLokesh/learn-with-satya/compare
+```
+
+**6. Review and Merge**
+```bash
+# After review approval:
+gh pr merge <PR-number> --squash --delete-branch
+
+# Or merge via GitHub web interface
+```
+
+#### Workflow Rules
+
+**✅ ALWAYS:**
+- Create issue FIRST for any task (bug fix, feature, content, refactor)
+- Create branch from main before making changes
+- Link PR to issue using "Fixes #123" or "Resolves #123"
+- Write descriptive commit messages with issue reference
+- Test changes locally before pushing
+- Delete branch after merge
+
+**❌ NEVER:**
+- Commit directly to main branch
+- Push changes without an issue
+- Create PR without linking to issue
+- Merge without testing
+- Leave unmerged branches hanging
+
+#### Branch Naming Convention
+
+| Type | Format | Example |
+|------|--------|---------|
+| Bug fix | `fix/<issue>-<description>` | `fix/42-css-loading-github-pages` |
+| New feature | `feature/<issue>-<description>` | `feature/23-add-search-functionality` |
+| Blog post | `content/<issue>-<post-slug>` | `content/15-transformer-architecture` |
+| Documentation | `docs/<issue>-<doc-name>` | `docs/8-update-readme` |
+| Styling | `style/<issue>-<component>` | `style/31-callout-boxes` |
+| Refactor | `refactor/<issue>-<area>` | `refactor/19-series-navigation` |
+| Tests | `test/<issue>-<feature>` | `test/12-series-progress` |
+| Chores | `chore/<issue>-<task>` | `chore/5-update-dependencies` |
+
+#### Issue Template
+
+```markdown
+**Title:** [Type] Brief description
+
+**Description:**
+What needs to be done and why?
+
+**Acceptance Criteria:**
+- [ ] Criterion 1
+- [ ] Criterion 2
+- [ ] Tested locally
+- [ ] Documentation updated (if needed)
+
+**Related:**
+- Links to related issues or PRs
+```
+
+#### When User Requests a Task
+
+**Copilot MUST:**
+1. **Acknowledge the request**
+2. **Create or prompt for GitHub issue** (provide title and description)
+3. **Create feature branch** with proper naming
+4. **Execute the planned work**
+5. **Commit with proper message** (including issue reference)
+6. **Push branch to remote**
+7. **Create PR** linking to issue
+8. **Prompt user to review and merge**
+
+**Example Response:**
+```
+I'll fix the series navigation links. Let me follow the Git workflow:
+
+1. ✅ Creating issue #124: "Fix: Series navigation baseurl"
+2. ✅ Creating branch: fix/124-series-navigation-baseurl
+3. ✅ Making changes to _includes/series-navigation.html
+4. ✅ Testing locally with bundle exec jekyll build
+5. ✅ Committing: "fix: add baseurl to series navigation (Resolves #124)"
+6. ✅ Pushing to origin
+7. ✅ Creating PR #125 linked to issue #124
+
+Ready for review! Merge PR #125 when approved.
+```
+
+---
+
 ## 🚀 Quick Start - Content Creation Workflow
 
 **Every blog post follows this 5-phase workflow:**
