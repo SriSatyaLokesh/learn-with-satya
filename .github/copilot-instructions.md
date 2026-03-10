@@ -67,6 +67,38 @@
 
 **📖 Full guide**: [`.github/prompts/blog.prompt.md`](.github/prompts/blog.prompt.md)
 
+### Blog Writing Style Guidelines
+
+**CRITICAL: Avoid AI-Written Patterns**
+
+❌ **DO NOT USE:**
+- Emojis in blog content (🚀, ✅, 📊, etc.) — Use plain text only
+- Excessive dashes and bullet points that signal AI writing
+- Overly structured lists with "Here's what you need to know:" intros
+- Phrases like "Let's dive in," "In this article," "At the end of the day"
+- Section breaks with `---` horizontal rules — Use headings only
+
+✅ **DO USE:**
+- Natural, conversational language
+- Direct statements without meta-commentary
+- Code examples and practical demonstrations
+- Real-world scenarios and concrete examples
+- Data and statistics from credible sources
+
+**Spacing & Typography:**
+- Tight paragraph spacing (no excessive line breaks)
+- Smaller heading sizes (H2: 27px, H3: 21px on desktop)
+- Lists: 6px margin between items, 10-15px between list and next element
+- Paragraphs: 10-15px margin between them
+- No decorative dividers — Let content flow naturally
+
+**Content Structure:**
+- Start with value immediately (no fluff intros)
+- Use headings to organize, not to create visual breaks
+- Keep related content grouped together
+- Use code blocks for technical examples
+- Tables for comparisons, not bullet lists
+
 ---
 
 ## 🎓 LMS Features

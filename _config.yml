@@ -1,14 +1,14 @@
 # Site Settings
-name: Jekflix
-title: Jekflix | A blog theme for Jekyll
-description: Jekflix is a template for Jekyll inspired by Netflix and made by
-  Thiago Rossener.
+name: Learn with Satya K
+title: Learn with Satya K | AI-powered learning blog
+version: v1.0.0
+description: Learn with Satya K is an AI-powered learning blog for developers, featuring structured series and hands-on tutorials.
 tags:
   - blog
-  - template
+  - learning
+  - ai
   - jekyll
-  - theme
-  - netlify
+  - devtools
 show_hero: true
 menu:
   - title: Home
