@@ -23,6 +23,52 @@
 
 ---
 
+## 📝 Blog Creation Commands
+
+**NEW: Professional blog creation system with quality scoring**
+
+```
+/blog write <topic>     - Write new post with template selection
+/blog analyze <file>    - Quality audit (0-100 score, 5 categories)
+/blog brief <topic>     - Generate content brief
+/blog outline <topic>   - SERP-informed outline
+/blog seo-check <file>  - Post-writing SEO validation
+/blog rewrite <file>    - Optimize existing post
+```
+
+**Features:**
+- **12 content templates** (auto-selected): how-to, listicle, case study, comparison, tutorial, etc.
+- **5-category quality scoring** (100 points): Content, SEO, E-E-A-T, Technical, AI Citations
+- **Dual optimization**: Google rankings (Dec 2025 Update) + AI citations (+340% rate)
+- **AI detection**: Flags AI-generated patterns, ensures human-written quality
+- **Jekyll integration**: Category/series support, difficulty levels, front matter validation
+
+**Quality Standards:**
+- Minimum publish score: **80+ (Strong band)**
+- 8+ unique sources (Tier 1-3)
+- Answer-first formatting (40-60 word opening paragraphs)
+- Citation capsules for AI extraction
+- 2-3 information gain markers (original data, experience, insights)
+- FAQ section with 3-5 questions
+- 5-10 internal linking zones
+
+**Quick Example:**
+```bash
+# Write a new post
+/blog write "Understanding Transformer Architecture"
+# (Answers questions: category, difficulty, series, length)
+# (Auto-selects template, researches, generates outline, writes complete post)
+# (Saves to: _posts/ai/2026-03-10-transformer-architecture.md)
+
+# Check quality
+/blog analyze _posts/ai/2026-03-10-transformer-architecture.md
+# (Returns score: 87/100 [Strong], breakdown, recommendations)
+```
+
+**📖 Full guide**: [`.github/prompts/blog.prompt.md`](.github/prompts/blog.prompt.md)
+
+---
+
 ## Project Overview
 
 **Learn with Satya K** is a Jekyll-based AI-powered learning blog system hosted on GitHub Pages. It's a developer-owned static site that functions as a lightweight Learning Management System (LMS) with structured learning series across AI, System Design, Backend Engineering, and more.
