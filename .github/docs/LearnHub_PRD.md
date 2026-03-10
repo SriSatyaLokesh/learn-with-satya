@@ -1,0 +1,235 @@
+# Learn with Satya K — Product Requirements Document (PRD)
+**Version:** 1.0 | **Date:** March 2026 | **Status:** Draft
+
+---
+
+## Document Info
+
+| Field | Detail |
+|---|---|
+| Project Name | Learn with Satya K — Jekyll-Based AI-Powered Learning Blog System |
+| Document Type | Product Requirements Document |
+| Author | Developer Portfolio Owner |
+| Target Platform | GitHub Pages (Jekyll Static Site) |
+| Agent Framework | Multi-Agent AI Pipeline (Research → SEO → Writer → Formatter) |
+
+---
+
+## Table of Contents
+
+1. [Executive Summary](#1-executive-summary)
+2. [Product Vision & Goals](#2-product-vision--goals)
+3. [Target Users & Personas](#3-target-users--personas)
+4. [Content Architecture](#4-content-architecture)
+5. [Feature Requirements](#5-feature-requirements)
+6. [AI Agent Content Pipeline](#6-ai-agent-content-pipeline)
+7. [Non-Functional Requirements](#7-non-functional-requirements)
+8. [Constraints & Assumptions](#8-constraints--assumptions)
+9. [Success Metrics](#9-success-metrics)
+
+---
+
+## 1. Executive Summary
+
+Learn with Satya K is a developer-owned, SEO-optimised static learning blog built on Jekyll and hosted on GitHub Pages. The system functions as a lightweight Learning Management System (LMS) where visitors can explore structured learning series across topics such as AI, System Design, Backend Engineering, and more.
+
+All content is generated through a multi-agent AI pipeline that researches, writes, optimises for SEO, and formats posts automatically — reducing manual effort while maintaining high-quality output. The blog is attached to the owner's developer portfolio and serves as a public resource for the developer community.
+
+---
+
+## 2. Product Vision & Goals
+
+### 2.1 Vision Statement
+
+> To build a beautiful, fast, and perpetually growing learning platform where developers can follow structured learning paths across modern tech disciplines — powered by an intelligent multi-agent content engine.
+
+### 2.2 Primary Goals
+
+- Provide categorised, sequential learning content (Series) across AI, System Design, Backend, and more
+- Enable autonomous AI-powered blog post creation through a multi-agent workflow
+- Maintain a high-quality, SEO-friendly content standard with proper image attribution
+- Serve as a portfolio attachment that demonstrates technical knowledge and thought leadership
+- Allow learners to follow "Learning Series" from Post 1 to Post N without breaking the learning flow
+- Support random standalone posts that are general insights, updates, or commentary
+
+---
+
+## 3. Target Users & Personas
+
+| Persona | Profile | Goals |
+|---|---|---|
+| **The Learner** | Junior to mid-level developer, self-taught or transitioning | Follow structured series, learn at own pace, bookmark posts |
+| **The Explorer** | Experienced dev looking for breadth, new frameworks | Browse categories, read standalone posts, discover trends |
+| **The Portfolio Visitor** | Recruiter or tech lead visiting dev portfolio | Understand author's depth, see range of technical writing |
+| **The Author (You)** | Developer maintaining and growing the blog | Create posts via AI pipeline, manage series, monitor analytics |
+
+---
+
+## 4. Content Architecture
+
+### 4.1 Content Types
+
+| Content Type | Description | Example |
+|---|---|---|
+| Learning Series Post | Part N of a sequential series on a topic. Numbered 1, 2, 3... | AI Fundamentals — Part 3: Neural Networks |
+| Standalone Post | One-off article, trend insight, or concept explainer | Why Every Dev Should Understand Vector Databases |
+| Category Landing Page | Auto-generated index page for each category | All posts tagged 'System Design' |
+| Series Index Page | Overview page listing all posts in a series with progress indicator | AI Fundamentals Series — 8 Posts |
+
+### 4.2 Categories
+
+Each category is a top-level taxonomy with its own landing page, icon, colour accent, and description.
+
+| Category Slug | Display Name | Description |
+|---|---|---|
+| `ai` | Artificial Intelligence | LLMs, ML fundamentals, RAG, embeddings, AI agents |
+| `system-design` | System Design | Scalability, distributed systems, architecture patterns |
+| `backend` | Backend Engineering | APIs, databases, authentication, microservices |
+| `devops` | DevOps & Infrastructure | CI/CD, Docker, Kubernetes, cloud deployment |
+| `frontend` | Frontend & Web | Modern JS, React, performance, web standards |
+| `career` | Career & Mindset | Developer growth, productivity, job hunting |
+| `tools` | Dev Tools & Ecosystem | IDEs, CLI tools, frameworks, boilerplate |
+
+### 4.3 Learning Series Structure
+
+A Learning Series is a curated ordered set of blog posts forming a complete curriculum on one topic. Each series has:
+
+- A unique `series_id` slug (e.g., `ai-fundamentals`)
+- A series title and short description
+- An ordered list of post slugs with their part numbers (`part: 1, 2, 3...`)
+- A **Series Index Page** auto-generated by Jekyll listing all parts
+- **Prev / Next navigation** injected at the bottom of each part
+- A **completion indicator** showing how many parts the user has viewed (via `localStorage`)
+- An **estimated reading time** per post and total series reading time
+
+---
+
+## 5. Feature Requirements
+
+### 5.1 Core Blog Features
+
+| Feature | Description |
+|---|---|
+| Homepage | Featured post carousel, latest posts grid, category quick-links, and series spotlight section |
+| Post Page | Full article with hero image, author info, estimated read time, series breadcrumb if applicable, table of contents for long posts, tags, and related posts |
+| Series Navigation | Prev/Next buttons within a series, progress bar showing current part, series overview sidebar |
+| Category Pages | Filterable list of all posts in a category, with series and standalone sections separated |
+| Search | Client-side fuzzy search (Lunr.js) across all post titles, excerpts, and tags |
+| Tags | Tag cloud and tag-specific index pages for cross-cutting topics |
+| RSS Feed | Auto-generated `feed.xml` for all posts and per-category feeds |
+| Sitemap | Auto-generated `sitemap.xml` for SEO indexing |
+| Dark Mode | Toggle between light and dark theme, persisted in `localStorage` |
+| Reading Progress | Visual progress bar at top of each post page |
+| Image Attribution | Structured credits block under each image sourced from external URLs |
+| Share Buttons | Twitter/X, LinkedIn, and copy-link sharing buttons per post |
+
+### 5.2 Learning Management Features
+
+| Feature | Description |
+|---|---|
+| Series Index Pages | Auto-generated overview page per series with all parts listed |
+| Part Navigation | Bottom-of-post prev/next links with part title previews |
+| Post Completion Tracking | Client-side (`localStorage`) tracking of viewed posts; checkmarks on series index |
+| Series Progress Bar | Visual indicator of series completion percentage |
+| Estimated Read Time | Calculated from word count (200 wpm) and shown on every post |
+| Prerequisites Block | Optional front-matter field to show prerequisite knowledge or prior series posts |
+| Difficulty Badge | Beginner / Intermediate / Advanced badge per post |
+| Learning Path Sidebar | Sticky sidebar on post pages showing current series structure |
+
+### 5.3 SEO & Performance Features
+
+| Feature | Description |
+|---|---|
+| Meta Tags | Title, description, canonical URL, OpenGraph, Twitter Cards per post |
+| Schema.org JSON-LD | Article structured data with author, datePublished, and image fields |
+| Optimised Images | WebP conversion recommended; lazy loading on all non-hero images |
+| Static HTML Output | Jekyll generates pre-built HTML; no server-side processing at runtime |
+| CDN Hosting | GitHub Pages + optional Cloudflare CDN layer for edge caching |
+| Minified Assets | CSS/JS minified via Jekyll plugins in production |
+| Canonical Links | Prevent duplicate content issues across tag/category views |
+| Internal Linking | AI agents instructed to include 2–3 internal links per post |
+
+---
+
+## 6. AI Agent Content Pipeline
+
+### 6.1 Pipeline Overview
+
+> The multi-agent pipeline transforms a single content idea into a fully formatted, SEO-ready Jekyll blog post in Markdown. The author provides a topic or idea; the system handles research, writing, optimisation, and file formatting automatically.
+
+The pipeline consists of **five agents** in a sequential handoff chain:
+
+| Agent | Role | Primary Output |
+|---|---|---|
+| **1. Orchestrator Agent** | Receives the author's idea, clarifies scope, selects category and series, dispatches to Research Agent | Structured content brief (JSON) |
+| **2. Research Agent** | Searches the web for 5–10 reference posts/articles, extracts key insights, statistics, and angles | Research summary + source URLs |
+| **3. SEO & Strategy Agent** | Designs post structure: title, slug, meta description, H2/H3 outline, target keywords, internal link suggestions, image search queries | SEO blueprint (JSON/Markdown) |
+| **4. Writing Agent** | Writes the full blog post body following the SEO outline and research inputs; includes code blocks, callouts, and image placeholders with credit instructions | Full Markdown draft |
+| **5. Formatter Agent** | Converts the draft into a valid Jekyll Markdown file with complete front-matter, validates structure, adds image credits block, saves to `_posts/category/` path | Final `.md` file ready for commit |
+
+### 6.2 Author Interaction Points
+
+- **Input:** Author provides a text idea or prompt (e.g., *"Write Part 3 of the AI Fundamentals series on Transformer Architecture"*)
+- **Review:** After Formatter Agent completes, the Markdown file is presented to the author for review before committing
+- **Images:** Author is notified of all image placeholders with recommended search queries and attribution instructions. Author manually sources and places hero images; inline images are fetched from Wikimedia Commons or Unsplash with attribution
+- **Commit:** Author reviews, makes any edits, and pushes to GitHub which triggers GitHub Pages rebuild
+
+### 6.3 Image Handling Policy
+
+All images used in posts must comply with the following rules:
+
+- **Hero images:** Sourced and placed by the author. The Formatter Agent inserts a placeholder with a recommended Unsplash search query
+- **Inline/supporting images:** Sourced from Unsplash (free tier) or Wikimedia Commons. The Writing Agent embeds image URLs with `![]()` syntax; the Formatter Agent appends an attribution block below each image
+- **Attribution format:** `Photo by [Photographer Name] on [Source] — [License]` rendered as a small italic caption underneath
+- **Prohibited sources:** No scraping of Getty Images, Shutterstock, or similarly restricted sources
+
+---
+
+## 7. Non-Functional Requirements
+
+| Requirement | Target | Notes |
+|---|---|---|
+| Page Load Speed | < 2s on 4G (Lighthouse ≥ 90) | Static HTML + CDN makes this achievable |
+| Accessibility | WCAG 2.1 AA compliant | Alt text on all images, keyboard nav, contrast ratios |
+| Mobile Responsiveness | Fully responsive at 320px, 768px, 1200px+ | Jekyll theme must support responsive layouts |
+| SEO Score | Lighthouse SEO ≥ 95 on all post pages | Handled by front-matter + SEO plugin |
+| Uptime | GitHub Pages SLA (~99.9%) | No custom server management needed |
+| Build Time | < 60s for up to 500 posts | Jekyll incremental builds; monitor at ~200+ posts |
+| Content Quality | Minimum 800 words per learning post | Enforced by Writing Agent prompt constraints |
+| Image Credits | 100% of external images must have attribution | Formatter Agent validation step |
+
+---
+
+## 8. Constraints & Assumptions
+
+### 8.1 Constraints
+
+- **Platform:** GitHub Pages only supports Jekyll natively. No server-side plugins (only GitHub Pages whitelist plugins allowed)
+- **Dynamic Features:** No server-side session management. User progress (series completion) is `localStorage` only
+- **Search:** Must be client-side (no paid search service assumed). Lunr.js index generated at build time
+- **Database:** No database. All content is Markdown files + Jekyll front-matter. YAML data files used for series/category metadata
+- **Cost:** All infrastructure must remain free tier (GitHub Pages, Unsplash free API, Cloudflare free)
+
+### 8.2 Assumptions
+
+- The author has a GitHub account and basic familiarity with Git workflows
+- AI agents are powered by Claude (Anthropic API) via API calls made from a local or CI-hosted agent runner
+- The author will review and approve all AI-generated content before publishing
+- Image sourcing is a collaborative step — agents suggest, author approves hero images
+
+---
+
+## 9. Success Metrics
+
+| Metric | Target (6 months post-launch) |
+|---|---|
+| Total Posts Published | ≥ 50 posts across all categories |
+| Organic Search Traffic | ≥ 500 unique monthly visitors from search |
+| Series Completion Rate | ≥ 30% of series starters reach the final part |
+| Average Lighthouse Score | ≥ 92 across Performance, SEO, Accessibility |
+| Content Pipeline Speed | 1 post from idea to formatted `.md` in < 15 minutes |
+| Portfolio Referral Traffic | Measurable inbound from blog to portfolio |
+
+---
+
+*Learn with Satya K PRD v1.0 — March 2026 — This is a living document. Update version and date on any revision.*
