@@ -1,20 +1,23 @@
 # Learn with Satya K Theme Colors
-# Ocean-inspired color palette with warm accents
+# Minimal design with single orange accent
 
 # Primary Colors
-themeColor: '#219ebc'      # Blue Green - primary brand color
-primaryDark: '#023047'     # Deep Space Blue - dark mode primary
-accentDark: '#ffb703'      # Amber Flame - accent/highlight color
+themeColor: '#dc2f02'      # Orange - accent color (CTAs, links, active states)
+primaryDark: '#000000'     # Black - headings and primary text
+accentDark: '#dc2f02'      # Orange - same as theme for consistency
 
 # Background Colors
-lightGray: '#ffffff'       # White - light backgrounds
-texts: '#023047'           # Deep Space Blue - body text
+lightGray: '#ffffff'       # White - all backgrounds
+texts: '#374151'           # Dark grey - body text
 
-# Additional Colors
-skyBlueLight: '#8ecae6'    # Sky Blue Light - secondary accent
-princetonOrange: '#fb8500' # Princeton Orange - call-to-action
+# Additional Greys
+textGreyMedium: '#6B7280'  # Medium grey - tertiary text
+textGreyLight: '#9CA3AF'   # Light grey - disabled/placeholders
+borderGrey: '#E5E7EB'      # Light grey - borders and dividers
+surfaceGrey: '#F9FAFB'     # Very light grey - subtle backgrounds
 
-# Difficulty badges:
-# - Beginner: #8ecae6 (Sky Blue Light)
-# - Intermediate: #ffb703 (Amber Flame)
-# - Advanced: #fb8500 (Princeton Orange)
+# Semantic Colors (feedback only)
+successGreen: '#10B981'    # Success messages
+errorRed: '#EF4444'        # Error messages
+warningYellow: '#F59E0B'   # Warning messages
+infoBlue: '#3B82F6'        # Information messages

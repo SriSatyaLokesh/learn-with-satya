@@ -1,5 +1,5 @@
 # Learn with Satya K - Category Definitions
-# 7 learning domains with rich metadata for visual identity and navigation
+# 7 learning domains - Using consistent grey styling
 
 - slug: ai
   title: Artificial Intelligence
@@ -8,8 +8,6 @@
     Master LLMs, ML fundamentals, RAG systems, embeddings, and AI agents.
     From theory to production deployments with hands-on examples.
   icon: "🤖"
-  color: "#219ebc"      # Blue Green
-  text_color: "#FFFFFF"
   order: 1
 
 - slug: system-design
@@ -19,8 +17,6 @@
     Build scalable distributed systems. Learn architecture patterns, 
     scalability strategies, and production system design principles.
   icon: "🏗️"
-  color: "#023047"      # Deep Space Blue
-  text_color: "#FFFFFF"
   order: 2
 
 - slug: backend
@@ -30,8 +26,6 @@
     Master APIs, databases, authentication, microservices, and server-side 
     architecture for production applications.
   icon: "⚙️"
-  color: "#219ebc"      # Blue Green
-  text_color: "#FFFFFF"
   order: 3
 
 - slug: devops
@@ -41,8 +35,6 @@
     CI/CD pipelines, Docker, Kubernetes, cloud deployment, monitoring, 
     and infrastructure as code for modern applications.
   icon: "☁️"
-  color: "#8ecae6"      # Sky Blue Light
-  text_color: "#023047"  # Dark text for light background
   order: 4
 
 - slug: frontend
@@ -52,8 +44,6 @@
     Modern JavaScript, React, performance optimization, web standards, 
     and building great user experiences.
   icon: "🎨"
-  color: "#ffb703"      # Amber Flame
-  text_color: "#023047"  # Dark text
   order: 5
 
 - slug: career
@@ -63,8 +53,6 @@
     Developer growth strategies, productivity tips, job hunting, 
     interviewing, and building a successful tech career.
   icon: "📈"
-  color: "#fb8500"      # Princeton Orange
-  text_color: "#FFFFFF"
   order: 6
 
 - slug: tools
@@ -74,6 +62,4 @@
     IDEs, CLI tools, frameworks, boilerplate setups, and productivity 
     tools that make development faster and better.
   icon: "🛠️"
-  color: "#219ebc"      # Blue Green
-  text_color: "#FFFFFF"
   order: 7
