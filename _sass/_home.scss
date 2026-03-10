@@ -28,7 +28,7 @@
   margin: 0 0 rem(40px);
   padding: 0 rem(23px);
   text-transform: lowercase;
-  color: $bgPrimary;
+  color: #fff;
 }
 
 .box-item {
@@ -71,12 +71,12 @@
     .box-body {
       time,
       p {
-        color: $accentPrimary;
+        color: $accentDark;
       }
 
       .cover {
         .new-post-tag {
-          background-color: $textPrimary;
+          background-color: #000;
         }
 
         .read-icon {
@@ -101,7 +101,7 @@
     padding: 0 rem(15px);
 
     a {
-      color: $accentPrimary;
+      color: $accentDark;
     }
   }
 
@@ -116,7 +116,7 @@
     time {
       font-weight: 300;
       font-size: rem(16px);
-      color: $textTertiary;
+      color: darken($lightGray, 50%);
       pointer-events: none;
     }
 
@@ -124,13 +124,13 @@
       margin: rem(10px) 0;
       font-size: rem(24px);
       @include mainFont(800);
-      color: $textPrimary;
+      color: $accentDark;
       line-height: rem(30px);
     }
 
     p {
       margin: 0 0 rem(30px);
-      color: $textSecondary;
+      color: darken($lightGray, 20%);
       font-size: rem(17px);
       line-height: rem(26px);
     }
@@ -138,18 +138,18 @@
     .tags a {
       height: rem(30px);
       line-height: rem(26px);
-      color: $accentPrimary;
+      color: $accentDark;
       padding: 0 rem(10px);
-      border: 1px solid $accentPrimary;
+      border: 1px solid $accentDark;
       border-radius: 15px;
       display: inline-block;
       margin: 0 rem(10px) rem(10px) 0;
       z-index: 50;
 
       &:hover {
-        color: $bgPrimary;
-        background: $accentPrimary;
-        border-color: $accentPrimary;
+        color: $primaryDark;
+        background: $accentDark;
+        border-color: $accentDark;
       }
     }
 
