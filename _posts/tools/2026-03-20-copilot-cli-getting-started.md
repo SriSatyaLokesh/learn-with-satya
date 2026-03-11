@@ -86,6 +86,7 @@ Interact with GitHub Copilot from the command line
 ```
 
 **Common setup errors:**
+
 | Error | Cause | Fix |
 |-------|-------|-----|
 | 'gh: command not found' | GitHub CLI not installed | Install with brew/winget/apt |

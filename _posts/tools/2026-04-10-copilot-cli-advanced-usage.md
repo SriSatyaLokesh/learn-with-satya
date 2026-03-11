@@ -88,6 +88,7 @@ my-merge-agent   ready
 ```
 
 **Common setup errors:**
+
 | Error | Cause | Fix |
 |-------|-------|-----|
 | 'agent not found' | Wrong path or filename | Check .github/agents/ |
