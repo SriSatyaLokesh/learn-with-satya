@@ -17,6 +17,27 @@ This skill documents the complete **Git workflow with GitHub CLI automation** fo
 
 ---
 
+## GitHub Message Size Limits & Conventions
+
+**Critical**: GitHub has strict character limits. Keep messages compact.
+
+| Field | Max Chars | Convention | Example |
+|-------|-----------|-----------|---------|
+| Issue title | 255 | Keep under 60 | `bug: Post completion not saving` |
+| Issue body | ~64KB | Keep under 2000 | Use bullet lists, minimal formatting |
+| PR title | 255 | Keep under 60 | `fix: Reading time parsing error` |
+| PR body | ~64KB | Keep under 1000 | Compact: `Fixes #42. Root cause: X. Fix: Y.` |
+| Commit msg subject | 72 | Keep under 50 (conventional) | `fix: Correct filter in post layout` |
+| Commit msg body | 72 chars per line | Bullet format w/ blank lines | Use `-` for bullets, 2 blank lines between |
+
+**Format Guidelines**:
+- Issue/PR titles: `<type>: <what> <why if critical>`
+- Issue body: Start with 1-2 sentences, then bullet points
+- PR body: Start with `Fixes #X`, then bullets (max 500 chars)
+- Commits: Subject 50 chars max, body bullets with blank lines
+
+---
+
 ## GitHub CLI Setup
 
 ### Installation & Verification

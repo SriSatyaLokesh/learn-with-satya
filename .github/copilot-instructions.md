@@ -13,6 +13,16 @@
 1. Create GitHub Issue → 2. Create Branch → 3. Make Changes → 4. Create PR → 5. Link PR to Issue → 6. Merge to Main
 ```
 
+#### GitHub Message Size Limits - KEEP COMPACT
+
+**⚠️ GitHub API rejects messages that are too long. Always use compact format:**
+
+- **Issue titles**: Max 60 chars (e.g., `bug: Post completion not saving`)
+- **Issue body**: Max 2000 chars (use bullets: `- Issue 1\n- Issue 2`)
+- **PR titles**: Max 60 chars (e.g., `fix: Reading time parsing error`)
+- **PR body**: Max 1000 chars (e.g., `Fixes #42\n\n- Root cause: X\n- Fix: Y`)
+- **Commit message**: Subject 50 chars, body bullets
+
 #### Complete Workflow Steps
 
 **For full details on each step, see [Git Workflow Skill](./skills/git-workflow-github-cli/SKILL.md)**
@@ -64,12 +74,8 @@ gh pr create `
   --title "fix: Add baseurl to image paths" `
   --body "Fixes #42
 
-## Changes
 - Updated all image paths to include baseurl filter
-
-## Testing
-- [x] Local build passes
-- [x] No console errors" `
+- Local build passes, no errors" `
   --base main
 
 # If 'gh' not working, use full path:
@@ -77,12 +83,8 @@ gh pr create `
   --title "fix: Add baseurl to image paths" `
   --body "Fixes #42
 
-## Changes
 - Updated all image paths to include baseurl filter
-
-## Testing
-- [x] Local build passes
-- [x] No console errors" `
+- Local build passes, no errors" `
   --base main
 
 # Returns: https://github.com/SriSatyaLokesh/learn-with-satya/pull/3
