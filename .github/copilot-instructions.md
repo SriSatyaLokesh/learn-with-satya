@@ -18,8 +18,8 @@
 **For full details on each step, see [Git Workflow Skill](./skills/git-workflow-github-cli/SKILL.md)**
 
 **1. Create GitHub Issue**
-```bash
-gh issue create --title "fix: Brief description" --body "Detailed description"
+```powershell
+& "C:\Program Files\GitHub CLI\gh.exe" issue create --title "fix: Brief description" --body "Detailed description"
 # Returns: https://github.com/SriSatyaLokesh/learn-with-satya/issues/42
 ```
 
@@ -52,10 +52,10 @@ git push origin fix/42-image-paths-baseurl
 ```
 
 **6. Create Pull Request (⚠️ MUST INCLUDE "Fixes #X")**
-```bash
+```powershell
 # CRITICAL: PR body MUST start with "Fixes #42" to auto-close issue
-gh pr create \
-  --title "fix: Add baseurl to image paths" \
+& "C:\Program Files\GitHub CLI\gh.exe" pr create `
+  --title "fix: Add baseurl to image paths" `
   --body "Fixes #42
 
 ## Changes
@@ -63,26 +63,26 @@ gh pr create \
 
 ## Testing
 - [x] Local build passes
-- [x] No console errors" \
+- [x] No console errors" `
   --base main
 # Returns: https://github.com/SriSatyaLokesh/learn-with-satya/pull/3
 ```
 
 **7. Assign Reviewer**
-```bash
-gh pr edit 3 --add-reviewer SriSatyaLokesh
+```powershell
+& "C:\Program Files\GitHub CLI\gh.exe" pr edit 3 --add-reviewer SriSatyaLokesh
 ```
 
 **8. Approve PR**
-```bash
-gh pr review 3 --approve
+```powershell
+& "C:\Program Files\GitHub CLI\gh.exe" pr review 3 --approve
 # Note: You can't approve your own PR - this is normal
 ```
 
 **9. Merge PR**
-```bash
+```powershell
 # Squash merge (recommended for smaller fixes)
-gh pr merge 3 --squash --delete-branch
+& "C:\Program Files\GitHub CLI\gh.exe" pr merge 3 --squash --delete-branch
 
 # Output shows: ✓ Merged + Issue auto-closes
 ```

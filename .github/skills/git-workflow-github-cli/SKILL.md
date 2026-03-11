@@ -21,41 +21,40 @@ This skill documents the complete **Git workflow with GitHub CLI automation** fo
 
 ### Installation & Verification
 
-```bash
-# Verify GitHub CLI is installed
-which gh  # macOS/Linux
-Get-Command gh  # PowerShell
+```powershell
+# Verify GitHub CLI is installed (Windows path)
+Test-Path "C:\Program Files\GitHub CLI\gh.exe"  # Should return True
 
 # Current version check
-gh --version
+& "C:\Program Files\GitHub CLI\gh.exe" --version
 
-# On Windows: Typically installed at:
-C:\Program Files\GitHub CLI\gh.exe
+# If not in PATH, always use full path:
+# "C:\Program Files\GitHub CLI\gh.exe"
 ```
 
 ### Authentication
 
-```bash
+```powershell
 # Login to GitHub
-gh auth login
+& "C:\Program Files\GitHub CLI\gh.exe" auth login
 
 # Use existing token
-gh auth login --with-token < token.txt
+& "C:\Program Files\GitHub CLI\gh.exe" auth login --with-token < token.txt
 
 # Check authentication status
-gh auth status
+& "C:\Program Files\GitHub CLI\gh.exe" auth status
 
 # Refresh to update scopes
-gh auth refresh -s read:project
+& "C:\Program Files\GitHub CLI\gh.exe" auth refresh -s read:project
 ```
 
 ### Common Auth Issues
 
 | Issue | Solution |
 |-------|----------|
-| `authentication token is missing required scopes [read:project]` | Run: `gh auth refresh -s read:project` |
+| `authentication token is missing required scopes [read:project]` | Run: `& "C:\Program Files\GitHub CLI\gh.exe" auth refresh -s read:project` |
 | `Review: Can not approve your own pull request` | This is normal - you can't approve your own PR |
-| `permission denied` | Check: `gh auth status` (must show authenticated) |
+| `permission denied` | Check: `& "C:\Program Files\GitHub CLI\gh.exe" auth status` (must show authenticated) |
 
 ---
 
@@ -65,23 +64,23 @@ gh auth refresh -s read:project
 
 **Purpose**: Track the work and get an issue number for branching
 
-```bash
+```powershell
 # Simple issue
-gh issue create --title "fix: Image paths missing baseurl" \
+& "C:\Program Files\GitHub CLI\gh.exe" issue create --title "fix: Image paths missing baseurl" `
   --body "Image paths need baseurl prefix for GitHub Pages"
 
 # Issue with labels
-gh issue create --title "fix: Something broken" \
-  --body "Description here" \
+& "C:\Program Files\GitHub CLI\gh.exe" issue create --title "fix: Something broken" `
+  --body "Description here" `
   --label bug,enhancement
 
 # ⚠️ Common mistake: Multi-line body in single quotes
 # This FAILS on Windows/PowerShell:
-gh issue create --title "Title" --body "Line 1
+& "C:\Program Files\GitHub CLI\gh.exe" issue create --title "Title" --body "Line 1
 Line 2"
 
-# Use backslash continuation or single string:
-gh issue create --title "Title" --body "Line 1 and Line 2"
+# Use backtick continuation or single string:
+& "C:\Program Files\GitHub CLI\gh.exe" issue create --title "Title" --body "Line 1 and Line 2"
 ```
 
 **Output**: Returns issue number (e.g., `https://github.com/owner/repo/issues/42`)
@@ -173,10 +172,10 @@ git push origin fix/42-image-paths-baseurl
 
 **⚠️ CRITICAL**: PR body MUST start with `Fixes #<issue-number>` for auto-closure
 
-```bash
+```powershell
 # Complete PR with all info
-gh pr create \
-  --title "fix: Add baseurl prefix to all image paths" \
+& "C:\Program Files\GitHub CLI\gh.exe" pr create `
+  --title "fix: Add baseurl prefix to all image paths" `
   --body "Fixes #42
 
 ## Changes
@@ -186,7 +185,7 @@ gh pr create \
 
 ## Testing
 ✅ Local build passes
-✅ No console errors" \
+✅ No console errors" `
   --base main
 
 # ⚠️ MUST include "Fixes #42" or issues won't auto-close
@@ -207,15 +206,15 @@ gh pr create \
 
 ### Step 7: Assign Reviewer
 
-```bash
+```powershell
 # Get PR number from create output, or use:
-gh pr view -q  # Shows current PR info
+& "C:\Program Files\GitHub CLI\gh.exe" pr view -q  # Shows current PR info
 
 # Assign reviewer
-gh pr edit 3 --add-reviewer SriSatyaLokesh
+& "C:\Program Files\GitHub CLI\gh.exe" pr edit 3 --add-reviewer SriSatyaLokesh
 
 # Verify assignment
-gh pr view 3
+& "C:\Program Files\GitHub CLI\gh.exe" pr view 3
 ```
 
 **Output**: `https://github.com/owner/repo/pull/3 (OPEN)`
@@ -224,12 +223,12 @@ gh pr view 3
 
 ### Step 8: Approve Pull Request
 
-```bash
+```powershell
 # Standard approval
-gh pr review 3 --approve
+& "C:\Program Files\GitHub CLI\gh.exe" pr review 3 --approve
 
 # Approval with comment
-gh pr review 3 --approve --body "Looks good! Ready to merge."
+& "C:\Program Files\GitHub CLI\gh.exe" pr review 3 --approve --body "Looks good! Ready to merge."
 
 # ⚠️ Known limitation: Can't approve your own PR
 # If you create the PR, you are the author
@@ -243,18 +242,18 @@ gh pr review 3 --approve --body "Looks good! Ready to merge."
 
 ### Step 9: Merge Pull Request
 
-```bash
+```powershell
 # Squash merge (recommended for smaller PRs)
-gh pr merge 3 --squash --delete-branch
+& "C:\Program Files\GitHub CLI\gh.exe" pr merge 3 --squash --delete-branch
 
 # Create merge commit (for important features)
-gh pr merge 3 --create-branch --delete-branch
+& "C:\Program Files\GitHub CLI\gh.exe" pr merge 3 --create-branch --delete-branch
 
 # Rebase merge (for clean history)
-gh pr merge 3 --rebase --delete-branch
+& "C:\Program Files\GitHub CLI\gh.exe" pr merge 3 --rebase --delete-branch
 
 # Standard merge
-gh pr merge 3 --merge --delete-branch
+& "C:\Program Files\GitHub CLI\gh.exe" pr merge 3 --merge --delete-branch
 ```
 
 **Output**:
