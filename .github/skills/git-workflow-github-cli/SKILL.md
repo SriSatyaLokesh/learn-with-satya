@@ -22,39 +22,42 @@ This skill documents the complete **Git workflow with GitHub CLI automation** fo
 ### Installation & Verification
 
 ```powershell
-# Verify GitHub CLI is installed (Windows path)
-Test-Path "C:\Program Files\GitHub CLI\gh.exe"  # Should return True
+# Try simple command first
+gh --version
 
-# Current version check
+# If that fails, GitHub CLI may not be in PATH. Use full path:
 & "C:\Program Files\GitHub CLI\gh.exe" --version
 
-# If not in PATH, always use full path:
-# "C:\Program Files\GitHub CLI\gh.exe"
+# Verify installation path exists
+Test-Path "C:\Program Files\GitHub CLI\gh.exe"  # Should return True
 ```
 
 ### Authentication
 
 ```powershell
-# Login to GitHub
+# Try simple command first
+gh auth login
+
+# If not working, use full path:
 & "C:\Program Files\GitHub CLI\gh.exe" auth login
 
-# Use existing token
-& "C:\Program Files\GitHub CLI\gh.exe" auth login --with-token < token.txt
-
-# Check authentication status
-& "C:\Program Files\GitHub CLI\gh.exe" auth status
+# Check authentication status (try gh first, then full path if needed)
+gh auth status
+# OR: & "C:\Program Files\GitHub CLI\gh.exe" auth status
 
 # Refresh to update scopes
-& "C:\Program Files\GitHub CLI\gh.exe" auth refresh -s read:project
+gh auth refresh -s read:project
+# OR: & "C:\Program Files\GitHub CLI\gh.exe" auth refresh -s read:project
 ```
 
 ### Common Auth Issues
 
 | Issue | Solution |
 |-------|----------|
-| `authentication token is missing required scopes [read:project]` | Run: `& "C:\Program Files\GitHub CLI\gh.exe" auth refresh -s read:project` |
+| `gh: command not found` | Use full path: `& "C:\Program Files\GitHub CLI\gh.exe"` |
+| `authentication token is missing required scopes [read:project]` | Run: `gh auth refresh -s read:project` (or with full path) |
 | `Review: Can not approve your own pull request` | This is normal - you can't approve your own PR |
-| `permission denied` | Check: `& "C:\Program Files\GitHub CLI\gh.exe" auth status` (must show authenticated) |
+| `permission denied` | Check: `gh auth status` (must show authenticated) |
 
 ---
 
@@ -65,22 +68,21 @@ Test-Path "C:\Program Files\GitHub CLI\gh.exe"  # Should return True
 **Purpose**: Track the work and get an issue number for branching
 
 ```powershell
-# Simple issue
+# Try simple command first
+gh issue create --title "fix: Image paths missing baseurl" `
+  --body "Image paths need baseurl prefix for GitHub Pages"
+
+# If 'gh' command not found, use full path:
 & "C:\Program Files\GitHub CLI\gh.exe" issue create --title "fix: Image paths missing baseurl" `
   --body "Image paths need baseurl prefix for GitHub Pages"
 
-# Issue with labels
-& "C:\Program Files\GitHub CLI\gh.exe" issue create --title "fix: Something broken" `
+# Issue with labels (try gh first)
+gh issue create --title "fix: Something broken" `
   --body "Description here" `
   --label bug,enhancement
 
-# ⚠️ Common mistake: Multi-line body in single quotes
-# This FAILS on Windows/PowerShell:
-& "C:\Program Files\GitHub CLI\gh.exe" issue create --title "Title" --body "Line 1
-Line 2"
-
-# Use backtick continuation or single string:
-& "C:\Program Files\GitHub CLI\gh.exe" issue create --title "Title" --body "Line 1 and Line 2"
+# ⚠️ Note: If any gh command fails with 'command not found',
+# replace 'gh' with '& "C:\Program Files\GitHub CLI\gh.exe"' throughout
 ```
 
 **Output**: Returns issue number (e.g., `https://github.com/owner/repo/issues/42`)
@@ -173,14 +175,29 @@ git push origin fix/42-image-paths-baseurl
 **⚠️ CRITICAL**: PR body MUST start with `Fixes #<issue-number>` for auto-closure
 
 ```powershell
-# Complete PR with all info
-& "C:\Program Files\GitHub CLI\gh.exe" pr create `
+# Try simple command first
+gh pr create `
   --title "fix: Add baseurl prefix to all image paths" `
   --body "Fixes #42
 
 ## Changes
 - Updated all placeholder.png paths in home.html
 - Fixed off.jpg fallback images
+- Images now resolve correctly on GitHub Pages
+
+## Testing
+✅ Local build passes
+✅ No console errors" `
+  --base main
+
+# If 'gh' not found, use full path:
+& "C:\Program Files\GitHub CLI\gh.exe" pr create `
+  --title "fix: Add baseurl prefix to all image paths" `
+  --body "Fixes #42
+
+## Changes
+- Updated all placeholder.png paths in home.html
+- Fixed off.jpg fallback images  
 - Images now resolve correctly on GitHub Pages
 
 ## Testing
@@ -208,13 +225,16 @@ git push origin fix/42-image-paths-baseurl
 
 ```powershell
 # Get PR number from create output, or use:
-& "C:\Program Files\GitHub CLI\gh.exe" pr view -q  # Shows current PR info
+gh pr view -q  # Shows current PR info
 
 # Assign reviewer
-& "C:\Program Files\GitHub CLI\gh.exe" pr edit 3 --add-reviewer SriSatyaLokesh
+gh pr edit 3 --add-reviewer SriSatyaLokesh
 
 # Verify assignment
-& "C:\Program Files\GitHub CLI\gh.exe" pr view 3
+gh pr view 3
+
+# If any command fails, replace 'gh' with full path:
+# & "C:\Program Files\GitHub CLI\gh.exe" pr view -q
 ```
 
 **Output**: `https://github.com/owner/repo/pull/3 (OPEN)`
@@ -224,11 +244,14 @@ git push origin fix/42-image-paths-baseurl
 ### Step 8: Approve Pull Request
 
 ```powershell
-# Standard approval
-& "C:\Program Files\GitHub CLI\gh.exe" pr review 3 --approve
+# Standard approval (try gh first)
+gh pr review 3 --approve
 
 # Approval with comment
-& "C:\Program Files\GitHub CLI\gh.exe" pr review 3 --approve --body "Looks good! Ready to merge."
+gh pr review 3 --approve --body "Looks good! Ready to merge."
+
+# If 'gh' not working, use full path:
+# & "C:\Program Files\GitHub CLI\gh.exe" pr review 3 --approve
 
 # ⚠️ Known limitation: Can't approve your own PR
 # If you create the PR, you are the author
@@ -243,17 +266,16 @@ git push origin fix/42-image-paths-baseurl
 ### Step 9: Merge Pull Request
 
 ```powershell
-# Squash merge (recommended for smaller PRs)
-& "C:\Program Files\GitHub CLI\gh.exe" pr merge 3 --squash --delete-branch
+# Squash merge (recommended for smaller PRs) - try gh first
+gh pr merge 3 --squash --delete-branch
 
-# Create merge commit (for important features)
-& "C:\Program Files\GitHub CLI\gh.exe" pr merge 3 --create-branch --delete-branch
+# If 'gh' not working:
+# & "C:\Program Files\GitHub CLI\gh.exe" pr merge 3 --squash --delete-branch
 
-# Rebase merge (for clean history)
-& "C:\Program Files\GitHub CLI\gh.exe" pr merge 3 --rebase --delete-branch
-
-# Standard merge
-& "C:\Program Files\GitHub CLI\gh.exe" pr merge 3 --merge --delete-branch
+# Other merge options:
+# gh pr merge 3 --create-branch --delete-branch  # Create merge commit
+# gh pr merge 3 --rebase --delete-branch         # Rebase merge
+# gh pr merge 3 --merge --delete-branch          # Standard merge
 ```
 
 **Output**:

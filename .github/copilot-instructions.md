@@ -19,7 +19,12 @@
 
 **1. Create GitHub Issue**
 ```powershell
+# Try simple command first
+gh issue create --title "fix: Brief description" --body "Detailed description"
+
+# If 'gh' command not found, use full path:
 & "C:\Program Files\GitHub CLI\gh.exe" issue create --title "fix: Brief description" --body "Detailed description"
+
 # Returns: https://github.com/SriSatyaLokesh/learn-with-satya/issues/42
 ```
 
@@ -54,6 +59,20 @@ git push origin fix/42-image-paths-baseurl
 **6. Create Pull Request (⚠️ MUST INCLUDE "Fixes #X")**
 ```powershell
 # CRITICAL: PR body MUST start with "Fixes #42" to auto-close issue
+# Try simple command first:
+gh pr create `
+  --title "fix: Add baseurl to image paths" `
+  --body "Fixes #42
+
+## Changes
+- Updated all image paths to include baseurl filter
+
+## Testing
+- [x] Local build passes
+- [x] No console errors" `
+  --base main
+
+# If 'gh' not working, use full path:
 & "C:\Program Files\GitHub CLI\gh.exe" pr create `
   --title "fix: Add baseurl to image paths" `
   --body "Fixes #42
@@ -65,24 +84,34 @@ git push origin fix/42-image-paths-baseurl
 - [x] Local build passes
 - [x] No console errors" `
   --base main
+
 # Returns: https://github.com/SriSatyaLokesh/learn-with-satya/pull/3
 ```
 
 **7. Assign Reviewer**
 ```powershell
-& "C:\Program Files\GitHub CLI\gh.exe" pr edit 3 --add-reviewer SriSatyaLokesh
+# Try gh first, then full path if needed:
+gh pr edit 3 --add-reviewer SriSatyaLokesh
+# OR: & "C:\Program Files\GitHub CLI\gh.exe" pr edit 3 --add-reviewer SriSatyaLokesh
 ```
 
 **8. Approve PR**
 ```powershell
-& "C:\Program Files\GitHub CLI\gh.exe" pr review 3 --approve
+# Try gh first:
+gh pr review 3 --approve
 # Note: You can't approve your own PR - this is normal
+
+# If 'gh' not working:
+# & "C:\Program Files\GitHub CLI\gh.exe" pr review 3 --approve
 ```
 
 **9. Merge PR**
 ```powershell
-# Squash merge (recommended for smaller fixes)
-& "C:\Program Files\GitHub CLI\gh.exe" pr merge 3 --squash --delete-branch
+# Squash merge (recommended for smaller fixes) - try gh first:
+gh pr merge 3 --squash --delete-branch
+
+# If 'gh' not working, use full path:
+# & "C:\Program Files\GitHub CLI\gh.exe" pr merge 3 --squash --delete-branch
 
 # Output shows: ✓ Merged + Issue auto-closes
 ```
