@@ -11,6 +11,16 @@ author: satya-k
 read_time: true
 toc: true
 toc_sticky: true
+
+# Hero image
+header:
+  image: "https://github.blog/wp-content/uploads/2026/03/dev-days.png?w=1600"
+  image_credit: "GitHub"
+  image_credit_url: "https://github.blog"
+
+# Featured / Pinned
+pinned: true
+featured: true
 ---
 
 GitHub Copilot Dev Days is a global, community-led initiative bringing developers together to explore AI-assisted coding hands-on. Running from March 15 to May 15, 2026, these free, in-person events are designed for everyone—from curious students to seasoned professionals wanting to level up their coding skills with GitHub Copilot.
