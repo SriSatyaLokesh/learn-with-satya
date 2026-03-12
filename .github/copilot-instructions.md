@@ -578,6 +578,34 @@ seo:
 | `difficulty` | Enum | ✅ Yes | One of: `beginner`, `intermediate`, `advanced` |
 | `seo.primary_keyword` | String | ✅ Yes | Main target keyword for SEO |
 | `seo.canonical_url` | URL | ✅ Yes | Absolute canonical URL |
+| `pinned` | Boolean | Optional | Set to `true` to feature post as hero. **RULE: Remove from all other posts when enabling** |
+| `featured` | Boolean | Optional | Set to `true` to feature post as hero. **RULE: Remove from all other posts when enabling** |
+
+### Featured / Pinned Post Rule
+
+⚠️ **CRITICAL RULE**: Only ONE blog post can have `pinned: true` and `featured: true` at a time.
+
+**When adding featured/pinned flags to a post:**
+1. Add `pinned: true` and `featured: true` to the new featured post front-matter
+2. Find all other posts with these flags and **remove them**
+3. Only the newest/most important post should be featured at any given time
+
+**Example workflow:**
+```bash
+# Post A is currently featured
+# File: _posts/tools/2026-02-15-old-post.md
+# Has: pinned: true, featured: true
+
+# You want to feature Post B instead
+# File: _posts/tools/2026-03-12-new-post.md
+# Add: pinned: true, featured: true
+
+# Then:
+# Remove pinned: true, featured: true FROM _posts/tools/2026-02-15-old-post.md
+# Only _posts/tools/2026-03-12-new-post.md keeps these flags
+```
+
+**Rationale**: Prevents multiple featured posts and ensures clear hero positioning on homepage.
 
 ## File Naming and Organization
 
