@@ -518,6 +518,7 @@ git push origin main
 
 ```yaml
 ---
+layout: post  # REQUIRED — without this the post renders as unstyled plain text
 title: "Understanding Transformer Architecture"
 subtitle: "How attention mechanisms changed everything in AI"  # Optional
 date: 2026-03-10 09:00:00 +0530
@@ -536,9 +537,10 @@ part: 3                            # Unique part number within series
 excerpt: "A deep dive into how transformer models use self-attention to process sequences in parallel."  # REQUIRED: Max 250 chars
 description: "Learn transformer architecture: self-attention, encoder-decoder structure, positional encoding, BERT and GPT."  # REQUIRED: 140-160 chars, includes primary keyword
 
-# Hero image (author-provided)
+# Hero image — image MUST be at root level (not inside header:)
+# The theme reads page.image for the <img> tag and page.header.image_credit for attribution
+image: /assets/images/posts/transformer-arch/hero.jpg
 header:
-  image: /assets/images/posts/transformer-arch/hero.jpg
   image_credit: "Photo by John Doe on Unsplash"
   image_credit_url: "https://unsplash.com/photos/xyz"
 
@@ -557,7 +559,7 @@ prerequisites:
 seo:
   primary_keyword: "transformer architecture explained"  # REQUIRED
   secondary_keywords: [self-attention, encoder decoder, BERT, GPT]
-  canonical_url: "https://yourusername.github.io/learn-ai/ai/transformer-architecture/"  # REQUIRED
+  canonical_url: "https://srisatyalokesh.is-a.dev/learn-ai/{slug}/"  # REQUIRED
 ---
 ```
 
@@ -565,6 +567,7 @@ seo:
 
 | Field | Type | Required | Rules |
 |---|---|---|---|
+| `layout` | String | ✅ Yes | **Always `post`**. Missing this renders the post as unstyled plain text. |
 | `title` | String | ✅ Yes | Include primary keyword. Max 70 chars. |
 | `date` | DateTime | ✅ Yes | ISO format with timezone: `YYYY-MM-DD HH:MM:SS +HHMM` |
 | `category` | String | ✅ Yes | Must match: `ai`, `system-design`, `backend`, `devops`, `frontend`, `career`, or `tools` |
@@ -574,10 +577,12 @@ seo:
 | `part` | Integer | If `series` set | Unique part number (1, 2, 3...) |
 | `excerpt` | String | ✅ Yes | 2-3 sentence summary. Max 250 chars. |
 | `description` | String | ✅ Yes | SEO meta description. **140-160 chars.** Must include primary keyword. |
-| `header.image_credit` | String | If image used | Full attribution with photographer and source |
+| `image` | String | If image used | **Must be at root level** — NOT inside `header:`. Theme reads `page.image` for the `<img>` tag. |
+| `header.image_credit` | String | If image used | Attribution text. Kept inside `header:` — theme reads `page.header.image_credit`. |
+| `header.image_credit_url` | String | If image used | Attribution URL. Kept inside `header:` — theme reads `page.header.image_credit_url`. |
 | `difficulty` | Enum | ✅ Yes | One of: `beginner`, `intermediate`, `advanced` |
 | `seo.primary_keyword` | String | ✅ Yes | Main target keyword for SEO |
-| `seo.canonical_url` | URL | ✅ Yes | Absolute canonical URL |
+| `seo.canonical_url` | URL | ✅ Yes | Absolute URL: `https://srisatyalokesh.is-a.dev/learn-ai/{slug}/` |
 | `pinned` | Boolean | Optional | Set to `true` to feature post as hero. **RULE: Remove from all other posts when enabling** |
 | `featured` | Boolean | Optional | Set to `true` to feature post as hero. **RULE: Remove from all other posts when enabling** |
 

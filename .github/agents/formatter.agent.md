@@ -47,6 +47,7 @@ Gather from content brief phases:
 
 ```yaml
 ---
+layout: post  # REQUIRED — always include, without it the post renders as plain text
 title: "{title from Phase 3}"
 subtitle: "{optional - create catchy subtitle if none exists}"
 date: {YYYY-MM-DD HH:MM:SS +0530}
@@ -65,9 +66,10 @@ part: {part number from Phase 1}
 excerpt: "{2-3 sentence summary - create from introduction}"
 description: "{meta description from Phase 3 - 140-160 chars}"
 
-# Hero image (placeholder for author to fill)
+# Hero image — image MUST be at root level (not inside header:)
+# page.image renders the <img>, page.header.image_credit renders attribution
+image: /assets/images/posts/{slug}/hero.jpg
 header:
-  image: /assets/images/posts/{slug}/hero.jpg
   image_credit: "TODO: Add photographer name and source"
   image_credit_url: "TODO: Add Unsplash photo URL"
 
@@ -86,13 +88,14 @@ prerequisites:
 seo:
   primary_keyword: "{primary keyword from Phase 3}"
   secondary_keywords: [{secondary keywords from Phase 3}]
-  canonical_url: "https://yourusername.github.io/learn-ai/{category}/{slug}/"
+  canonical_url: "https://srisatyalokesh.is-a.dev/learn-ai/{slug}/"
 ---
 ```
 
 ## Validation Rules
 
 ### Required Fields (Must Have)
+- `layout` (always `post` — never omit)
 - `title` (max 70 chars)
 - `date` (ISO 8601 with timezone)
 - `category` (must match: ai, system-design, backend, devops, frontend, career, tools)
@@ -100,6 +103,7 @@ seo:
 - `excerpt` (max 250 chars)
 - `description` (140-160 chars exactly)
 - `difficulty` (beginner|intermediate|advanced)
+- `image` (root-level field — NOT inside header:)
 - `seo.primary_keyword`
 - `seo.canonical_url`
 
@@ -110,6 +114,8 @@ If content type is "series":
 - `part` (integer - must be sequential, no gaps)
 
 ### Validation Checks
+- [ ] `layout: post` is present (BLOCKERS if missing — post renders as plain text)
+- [ ] `image:` is at root level (NOT inside `header:`)
 - [ ] Title length ≤ 70 chars
 - [ ] Description length is 140-160 chars
 - [ ] Category is one of 7 valid options
@@ -118,7 +124,7 @@ If content type is "series":
 - [ ] (Series) Part number is sequential
 - [ ] Primary keyword present in title
 - [ ] Primary keyword present in description
-- [ ] Canonical URL follows format
+- [ ] Canonical URL follows format: `https://srisatyalokesh.is-a.dev/learn-ai/{slug}/`
 - [ ] Hero image path follows convention
 
 ## Image Placeholder Processing
