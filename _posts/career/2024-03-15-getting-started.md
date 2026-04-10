@@ -7,7 +7,7 @@ tags: [learnai, learning, tutorials, getting-started]
 excerpt: "Welcome to LearnAI! Discover how to make the most of our structured learning series and track your progress."
 description: "Complete guide to LearnAI - explore organized learning series, track progress, and master AI, system design, and backend engineering through expert tutorials."
 difficulty: beginner
-image: /assets/img/blog-image.png
+image: https://imayas.biz/wp-content/uploads/2025/04/AI-assisted-Indent-management1.jpg
 author: satya-k
 reading_time: 5
 ---
