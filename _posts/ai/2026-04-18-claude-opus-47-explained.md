@@ -10,10 +10,11 @@ difficulty: beginner
 read_time: true
 toc: true
 toc_sticky: true
+image: https://resource.cometapi.com/Anthropic-releases-Claude-Opus-4.7.webp
 header:
-  image: /assets/images/posts/claude-opus-47-explained/hero.jpg
-  image_credit: "Pixabay"
-  image_credit_url: "https://pixabay.com"
+  
+  image_credit: "cometapi"
+  image_credit_url: "https://cometapi.com"
 author: satya-k
 seo:
   primary_keyword: "Claude Opus 4.7 explained"
