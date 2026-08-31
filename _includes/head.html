@@ -115,6 +115,57 @@
     }
     </script>
 
+    <!-- Mermaid Diagram Support -->
+    <style>
+        .mermaid {
+            background: #0d1117;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+        .mermaid svg { max-width: 100%; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'base',
+            securityLevel: 'loose',
+            themeVariables: {
+                background: '#0d1117',
+                mainBkg: '#0d1117',
+                nodeBorder: '#e0e0e0',
+                clusterBkg: '#161b22',
+                titleColor: '#ffffff',
+                edgeLabelBackground: '#0d1117',
+                primaryColor: '#0d1117',
+                primaryTextColor: '#ffffff',
+                primaryBorderColor: '#e0e0e0',
+                lineColor: '#e0e0e0',
+                secondaryColor: '#161b22',
+                tertiaryColor: '#0d1117',
+                fontFamily: 'Titillium Web, sans-serif',
+                fontSize: '14px'
+            }
+        });
+        
+        // Convert Jekyll markdown code blocks to Mermaid format
+        document.addEventListener('DOMContentLoaded', function() {
+            const codeBlocks = document.querySelectorAll('pre code.language-mermaid');
+            codeBlocks.forEach(block => {
+                const pre = block.parentElement;
+                const mermaidDiv = document.createElement('div');
+                mermaidDiv.className = 'mermaid';
+                mermaidDiv.textContent = block.textContent;
+                pre.replaceWith(mermaidDiv);
+            });
+            // Re-render all Mermaid diagrams
+            mermaid.contentLoaded();
+        });
+    </script>
+
     <!-- JavaScript enabled/disabled -->
     <script>
         document.querySelector('html').classList.remove('no-js');
