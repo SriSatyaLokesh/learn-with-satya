@@ -93,7 +93,7 @@ paginate_content:
     last:
       is_generated: true
     single:
-      is_generated: true
+      is_generated: false
 
 # SASS
 sass:
