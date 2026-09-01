@@ -47,7 +47,7 @@ This isn't a generic "top 10 AI courses" list. This is an **exact course sequenc
 #### 1. MIT 6.S191 – Introduction to Deep Learning
 **Duration**: 2–3 weeks | **Effort**: Medium
 
-**Official course**: [MIT 6.S191](https://introtodeeplearning.com/) | **YouTube**: [MIT 6.S191 Lectures](https://www.youtube.com/playlist?list=PLtBw6njQRH-PFAcq8rFVfzS295oXnkztn)
+**Official course**: [MIT 6.S191](https://introtodeeplearning.com/) | **YouTube**: [MIT 6.S191 Lectures](https://www.youtube.com/watch?v=II4giR4vOOo&list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&index=1)
 
 **Why first?**
 
